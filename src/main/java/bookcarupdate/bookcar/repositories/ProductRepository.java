@@ -80,6 +80,56 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "HAVING \n" +
             "    remain_seat > 0 OR remain_seat IS NULL;\n", nativeQuery = true)
     List<Product> findAll2();
+
+    @Query(value = "SELECT \n" +
+            "    p.product_id, \n" +
+            "    p.create_at, \n" +
+            "    p.description, \n" +
+            "    p.end_address, \n" +
+            "    p.end_time, \n" +
+            "    p.license_plates, \n" +
+            "    p.name, \n" +
+            "    p.phone_number, \n" +
+            "    p.phone_number2, \n" +
+            "    p.policy, \n" +
+            "    p.price, \n" +
+            "    p.start_address, \n" +
+            "    p.start_time, \n" +
+            "    p.update_at, \n" +
+            "    p.type, \n" +
+            "    p.utilities, \n" +
+            "    p.store_id, \n" +
+            "    p.status, \n" +
+            "    p.owner_name, \n" +
+            "    p.remain_seat - COALESCE(SUM(o.quantity), 0) AS remain_seat \n" +
+            "FROM \n" +
+            "    tblproduct p \n" +
+            "LEFT JOIN \n" +
+            "    tblorder o ON p.product_id = o.product_id \n" +
+            "GROUP BY \n" +
+            "    p.product_id, \n" +
+            "    p.create_at, \n" +
+            "    p.description, \n" +
+            "    p.end_address, \n" +
+            "    p.end_time, \n" +
+            "    p.license_plates, \n" +
+            "    p.name, \n" +
+            "    p.phone_number, \n" +
+            "    p.phone_number2, \n" +
+            "    p.policy, \n" +
+            "    p.price, \n" +
+            "    p.start_address, \n" +
+            "    p.start_time, \n" +
+            "    p.update_at, \n" +
+            "    p.type, \n" +
+            "    p.utilities, \n" +
+            "    p.store_id, \n" +
+            "    p.status, \n" +
+            "    p.owner_name, \n" +
+            "    p.remain_seat \n" +
+            "HAVING \n" +
+            "    remain_seat > 0 OR remain_seat IS NULL LIMIT :page OFFSET :number ;", nativeQuery = true)
+    List<Product> findAllPagi(@Param("page") int page, @Param("number") int number);
     @Query(value = "SELECT p.* FROM product_tb p WHERE display = true and deleted = false", nativeQuery = true)
     List<Product> findAllActiveProducts();
 

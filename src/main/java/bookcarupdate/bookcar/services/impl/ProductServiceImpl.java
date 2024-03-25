@@ -10,6 +10,8 @@ import bookcarupdate.bookcar.repositories.ProductRepository;
 import bookcarupdate.bookcar.services.ProductService;
 import bookcarupdate.bookcar.services.UserService;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
@@ -112,6 +114,11 @@ public class ProductServiceImpl implements ProductService {
         } catch (Exception e) {
             throw new CloudNotFoundException("Không tìm thấy sản phẩm có id là: " + id);
         }
+    }
+
+    @Override
+    public Page<Product> getProductPagination(int pageof, int pagesize) {
+        return productRepository.findAll(PageRequest.of(pageof,pagesize));
     }
 
     @Override
