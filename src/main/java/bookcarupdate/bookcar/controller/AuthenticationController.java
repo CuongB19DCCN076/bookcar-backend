@@ -38,7 +38,7 @@ public class AuthenticationController {
     @GetMapping("/get-all-product-pagi/{page}")
     public ResponseEntity<Object> getAllProductPagi(@PathVariable("page") Integer page) {
         int number = (int)(page-1)*10;
-        List<Product> products = productRepository.findAllPagi(page, number);
+        List<Product> products = productRepository.findAllPagi(10, number);
         List<Product> products1 = productRepository.findAll2();
         Map<String, Object> data = new HashMap<>();
         int pageNumber = (int) Math.ceil((double) products1.size() / 10);
