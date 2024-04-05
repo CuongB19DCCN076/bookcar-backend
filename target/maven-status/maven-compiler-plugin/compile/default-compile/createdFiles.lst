@@ -27,6 +27,8 @@ bookcarupdate\bookcar\models\User.class
 bookcarupdate\bookcar\dto\SearchDTO.class
 bookcarupdate\bookcar\dto\TestDTO.class
 bookcarupdate\bookcar\models\Store.class
+bookcarupdate\bookcar\config\Config.class
+bookcarupdate\bookcar\dto\PaymentDTO.class
 bookcarupdate\bookcar\dto\NewProjectRequest.class
 bookcarupdate\bookcar\services\impl\AuthenticationServiceImpl.class
 bookcarupdate\bookcar\services\impl\OrderServiceImpl.class
@@ -49,6 +51,7 @@ bookcarupdate\bookcar\services\StoreService.class
 bookcarupdate\bookcar\dto\GetStoreDTO.class
 bookcarupdate\bookcar\dto\ProductDTO.class
 bookcarupdate\bookcar\models\Order.class
+bookcarupdate\bookcar\controller\PaymentController.class
 bookcarupdate\bookcar\models\Stop.class
 bookcarupdate\bookcar\repositories\ProductRepository.class
 bookcarupdate\bookcar\repositories\ResponsiHandler.class
